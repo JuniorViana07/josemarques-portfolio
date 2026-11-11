@@ -1,0 +1,383 @@
+/* Portfólio de José Marques Viana Júnior
+   Paleta: papel frio, tinta azul-petróleo, um único acento. A cor "quente"
+   fica restrita à figura do fundo de olho, que é a peça central da página. */
+
+:root {
+  --papel: #eef2f3;
+  --tinta: #0f1c27;
+  --grafite: #4c5d6b;
+  --neblina: #cdd8de;
+  --sinal: #0a7a86;
+  --fundo-retina: #0c1319;
+
+  --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  --largura: 70rem;
+  --margem: clamp(20px, 5vw, 48px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 72px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--papel);
+  color: var(--tinta);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.62;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, p, ul, dl, dd, figure { margin: 0; }
+
+a { color: inherit; }
+
+:focus-visible {
+  outline: 2px solid var(--sinal);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--margem), var(--largura));
+  margin-inline: auto;
+}
+
+.pular {
+  position: absolute;
+  left: 12px;
+  top: -60px;
+  z-index: 20;
+  padding: 8px 12px;
+  background: var(--tinta);
+  color: var(--papel);
+  font-family: var(--sans);
+  font-size: 0.9rem;
+}
+.pular:focus { top: 12px; }
+
+/* Cabeçalho */
+.topo {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: color-mix(in srgb, var(--papel) 88%, transparent);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: box-shadow 0.2s ease;
+}
+.topo.rolou { box-shadow: 0 1px 0 var(--neblina); }
+
+.topo__in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 60px;
+}
+
+.marca {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.menu {
+  display: flex;
+  gap: clamp(14px, 3vw, 28px);
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+}
+.menu a {
+  color: var(--grafite);
+  text-decoration: none;
+}
+.menu a:hover { color: var(--tinta); }
+
+/* Hero */
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: center;
+  padding-block: clamp(32px, 6vw, 80px) clamp(48px, 7vw, 96px);
+}
+
+.hero h1 {
+  font-weight: 450;
+  font-size: clamp(3rem, 7.2vw, 6.4rem);
+  line-height: 0.94;
+  letter-spacing: -0.035em;
+}
+
+.cargo {
+  margin-top: clamp(20px, 3vw, 32px);
+  font-family: var(--sans);
+  font-weight: 500;
+  font-size: clamp(1.05rem, 1.6vw, 1.3rem);
+  line-height: 1.35;
+}
+
+.lede {
+  margin-top: 18px;
+  max-width: 34rem;
+}
+
+.situacao {
+  margin-top: 14px;
+  max-width: 34rem;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+  color: var(--grafite);
+}
+
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 26px;
+  margin-top: 28px;
+  font-family: var(--sans);
+}
+
+.botao {
+  display: inline-block;
+  padding: 0.72rem 1.15rem;
+  border-radius: 4px;
+  background: var(--tinta);
+  color: var(--papel);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+.botao:hover { background: var(--sinal); }
+
+.link {
+  font-size: 0.9375rem;
+  text-decoration: underline;
+  text-decoration-color: var(--neblina);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.22em;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.link:hover {
+  color: var(--sinal);
+  text-decoration-color: var(--sinal);
+}
+
+/* Figura (o momento central da página) */
+.figura { min-width: 0; }
+
+#retina {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 6px;
+  background: var(--fundo-retina);
+  cursor: crosshair;
+  touch-action: pan-y;
+}
+
+.figura figcaption {
+  margin-top: 12px;
+  max-width: 28rem;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--grafite);
+}
+
+/* Seções: título na margem esquerda, conteúdo à direita */
+.sec {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  padding-block: clamp(44px, 6vw, 88px);
+}
+
+.sec__titulo {
+  font-weight: 550;
+  font-size: 1.5rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+.sec__corpo { min-width: 0; max-width: 44rem; }
+.sec__corpo--largo { max-width: none; }
+
+.prosa p + p { margin-top: 1.1em; }
+
+@media (min-width: 56rem) {
+  .sec {
+    grid-template-columns: 11.5rem minmax(0, 1fr);
+    column-gap: 48px;
+  }
+  .sec__titulo {
+    position: sticky;
+    top: 84px;
+    align-self: start;
+  }
+}
+
+/* Experiência e formação */
+.item + .item { margin-top: 44px; }
+
+.item h3 {
+  font-weight: 550;
+  font-size: 1.5rem;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+.meta {
+  margin-top: 4px;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--grafite);
+}
+
+.item ul {
+  margin-top: 14px;
+  padding-left: 1.2em;
+}
+.item li { margin-top: 0.5em; padding-left: 0.2em; }
+.item li::marker { color: var(--sinal); }
+
+.idiomas {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+}
+
+/* Projetos */
+.proj {
+  display: grid;
+  gap: 18px 48px;
+  padding-block: 36px;
+}
+.proj:first-child { padding-top: 0; }
+.proj + .proj { border-top: 1px solid var(--neblina); }
+
+.proj h3 {
+  font-weight: 550;
+  font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: -0.015em;
+  text-wrap: balance;
+}
+.proj__texto p {
+  margin-top: 10px;
+  max-width: 30rem;
+}
+
+.fatos {
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  line-height: 1.5;
+}
+.fatos > div + div { margin-top: 12px; }
+.fatos dt {
+  font-weight: 500;
+  font-size: 0.8125rem;
+  color: var(--grafite);
+}
+.fatos dd { margin-top: 1px; }
+.fatos .resultado {
+  font-family: var(--serif);
+  font-weight: 600;
+  font-size: 1.25rem;
+  line-height: 1.3;
+}
+
+.mais {
+  padding-top: 8px;
+  font-family: var(--sans);
+}
+
+@media (min-width: 48rem) {
+  .proj { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+
+/* Habilidades */
+.hab { display: grid; gap: 18px; font-family: var(--sans); font-size: 0.97rem; line-height: 1.5; }
+.hab__linha { display: grid; gap: 2px 32px; }
+.hab dt { font-weight: 600; }
+.hab dd { color: var(--grafite); }
+
+@media (min-width: 48rem) {
+  .hab__linha { grid-template-columns: 13.5rem minmax(0, 1fr); }
+}
+
+/* Contato */
+.contato__chamada { max-width: 30rem; }
+
+.email {
+  display: inline-block;
+  margin-top: 12px;
+  font-size: clamp(1.3rem, 4.4vw, 2.5rem);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  overflow-wrap: anywhere;
+  text-decoration: underline;
+  text-decoration-color: var(--neblina);
+  text-decoration-thickness: 3px;
+  text-underline-offset: 0.18em;
+  transition: text-decoration-color 0.15s ease, color 0.15s ease;
+}
+.email:hover {
+  color: var(--sinal);
+  text-decoration-color: var(--sinal);
+}
+
+.contato__lista {
+  list-style: none;
+  padding: 0;
+  margin-top: 28px;
+  display: grid;
+  gap: 8px;
+  font-family: var(--sans);
+}
+.contato__lista .link { overflow-wrap: anywhere; }
+
+.local {
+  margin-top: 28px;
+  font-family: var(--sans);
+  font-size: 0.9375rem;
+  color: var(--grafite);
+}
+
+.rodape {
+  padding-block: 48px 56px;
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  color: var(--grafite);
+}
+
+/* Telas pequenas */
+@media (max-width: 55.99rem) {
+  .hero { grid-template-columns: minmax(0, 1fr); }
+  .figura { max-width: 30rem; }
+}
+
+@media (max-width: 39.99rem) {
+  .menu__extra { display: none; }
+  .menu { gap: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
