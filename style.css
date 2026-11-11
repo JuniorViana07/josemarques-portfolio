@@ -3,12 +3,15 @@
    fica restrita à figura do fundo de olho, que é a peça central da página. */
 
 :root {
-  --papel: #eef2f3;
-  --tinta: #0f1c27;
-  --grafite: #4c5d6b;
-  --neblina: #cdd8de;
-  --sinal: #0a7a86;
-  --fundo-retina: #0c1319;
+  /* Tema escuro. Os nomes das variáveis foram mantidos: "papel" é o fundo
+     da página e "tinta" é a cor do texto. */
+  color-scheme: dark;
+  --papel: #0a131b;
+  --tinta: #e8eef1;
+  --grafite: #8fa1ae;
+  --neblina: #213340;
+  --sinal: #4cc9d6;
+  --fundo-retina: #05090d;
 
   --serif: "Newsreader", "Iowan Old Style", Georgia, serif;
   --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -187,6 +190,7 @@ a { color: inherit; }
   aspect-ratio: 1;
   border-radius: 6px;
   background: var(--fundo-retina);
+  box-shadow: 0 0 0 1px var(--neblina), 0 40px 90px -40px rgba(224, 96, 40, 0.35);
   cursor: crosshair;
   touch-action: pan-y;
 }
